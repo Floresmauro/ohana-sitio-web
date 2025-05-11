@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="contacto">
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo Ohana"></a>
+      </div>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="granja.html">Granja</a></li>
+        <li><a href="rotiseria.html">Rotisería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="contacto-info">
+      <h2>Contacto</h2>
+      <p>Para cualquier consulta o pedido, no dudes en comunicarte con nosotros a través de los siguientes medios:</p>
+
+      <div class="info-contacto">
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Moreno 3674, San Martín, Buenos Aires</p>
+        <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong> (011) 6563-2766</p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> contacto@ohana.com.ar</p>
+      </div>
+
+      <!-- Botón WhatsApp con modal -->
+      <div class="whatsapp">
+        <a class="whatsapp-boton" href="#" onclick="abrirModalWhatsApp(event)">
+          <i class="fab fa-whatsapp"></i> Contactanos por WhatsApp
+        </a>
+      </div>
+
+      <!-- Modal WhatsApp -->
+      <div id="modalWhatsapp" class="modal" style="display: none;">
+        <div class="modal-contenido">
+          <h2>¿Querés contactarnos por WhatsApp?</h2>
+          <p>Se abrirá una conversación en WhatsApp.</p>
+          <div class="modal-botones">
+            <button class="btn-confirmar" onclick="confirmarWhatsApp()">Sí, abrir</button>
+            <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 40px;">Ubicación</h3>
+      <div class="mapa">
+        <iframe 
+          src="https://www.google.com/maps?q=Moreno+3674,+San+Martín,+Buenos+Aires,+Argentina&output=embed"
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen 
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ohana. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- JavaScript para el modal -->
+  <script>
+    function abrirModalWhatsApp(event) {
+      event.preventDefault();
+      document.getElementById("modalWhatsapp").style.display = "block";
+    }
+
+    function cerrarModal() {
+      document.getElementById("modalWhatsapp").style.display = "none";
+    }
+
+    function confirmarWhatsApp() {
+      window.open("https://wa.me/5491165632766", "_blank");
+      cerrarModal();
+    }
+  </script>
+</body>
+</html>
