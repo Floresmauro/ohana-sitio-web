@@ -5,34 +5,32 @@
   box-sizing: border-box;
 }
 
-/* VARIABLES */
-:root {
-  --color-granja-primario: #00b4db;
-  --color-granja-secundario: #0083b0;
-  --color-rotiseria-primario: #43e97b;
-  --color-rotiseria-secundario: #38f9d7;
-  --color-fondo-inicio: #121212;
-  --color-header: #000000;
-  --color-footer: #1e1e1e;
-  --color-texto: #ffffff;
-}
-
-/* BODY GENERAL */
-body {
+html {
+  scroll-behavior: smooth;
   font-family: 'Segoe UI', sans-serif;
+}
+
+body {
   line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-/* HEADER */
+/* === ENCABEZADOS GENERALES === */
 header {
-  background: var(--color-header);
-  color: var(--color-texto);
-  padding: 10px 20px;
+  padding: 1.5rem;
+  color: white;
 }
 
+header .logo img,
+.logo-inicio {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -40,374 +38,286 @@ header {
   flex-wrap: wrap;
 }
 
-.logo img {
-  height: 60px;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* MENÚ */
 .menu {
   list-style: none;
   display: flex;
-  gap: 20px;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
-  transition: 0.3s;
-}
-
-.menu li a:hover {
-  text-decoration: underline;
-}
-
-/* NAV DESPLEGABLE */
-nav ul, nav ul ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  margin: 0 10px;
-}
-
-/* MAIN GENERAL */
-main {
-  flex: 1;
-  padding: 30px;
-  text-align: center;
-}
-
-/* INICIO */
-main.inicio {
-  background: var(--color-fondo-inicio);
-  color: white;
-}
-
-.logo-inicio {
-  max-width: 200px;
-  margin: 0 auto 20px;
-  display: block;
-}
-
-/* BOTONES INICIO */
-.botones-inicio {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  margin-top: 40px;
-}
-
-@media(min-width: 600px) {
-  .botones-inicio {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-.botones-inicio a {
-  font-size: 20px;
-  padding: 14px 32px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  color: white;
-}
-
-.botones-inicio a:nth-child(1) { animation-delay: 0.3s; }
-.botones-inicio a:nth-child(2) { animation-delay: 0.5s; }
-
-.btn-granja {
-  background: linear-gradient(to right, var(--color-granja-primario), var(--color-granja-secundario));
-}
-
-.btn-rotiseria {
-  background: linear-gradient(to right, var(--color-rotiseria-primario), var(--color-rotiseria-secundario));
-}
-
-.botones-inicio a:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-}
-
-/* ANIMACIÓN */
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* PÁGINAS DE SECCIONES (Granja y Rotisería) */
-body.granja main,
-body.rotiseria main {
-  background-color: white;
-  color: black;
-}
-
-/* BIENVENIDA */
-.bienvenida {
-  margin-bottom: 30px;
-}
-
-.bienvenida h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.bienvenida p {
-  font-size: 18px;
-}
-
-/* IMÁGENES PRINCIPALES */
-.imagenes-principales {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
-.imagenes-principales img {
-  width: 250px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
-/* FOOTER */
-footer {
-  background: var(--color-footer);
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* SECCIONES POR COLOR */
+body.index header {
+  background: #121212;
+}
+
+body.granja header,
+body.catalogo-granja header,
+body.contacto header {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+}
+
+body.rotiseria header,
+body.catalogo-rotiseria header {
+  background: linear-gradient(135deg, #28a745, #82c91e);
+}
+
+/* === INICIO === */
+body.index {
+  background-color: #1a1a1a;
   color: white;
   text-align: center;
-  padding: 15px;
-  margin-top: auto;
-}
-
-/* ----------- CATÁLOGO GENERAL ----------- */
-.acordeon-contenido {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.acordeon-contenido.activo {
-  max-height: 1000px; /* valor suficientemente grande */
-}
-
-/* ----------- CATÁLOGO GRANJA ----------- */
-.catalogo-granja {
-  background-color: #ffffff;
-  min-height: 100vh;
   padding: 2rem;
-  color: #333;
 }
 
-.catalogo-granja .acordeon-btn {
-  background: linear-gradient(90deg, var(--color-granja-primario), var(--color-granja-secundario));
+.botones-inicio {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.catalogo-granja .acordeon-btn:hover {
-  background: linear-gradient(90deg, #007aa5, #005d85);
+.btn-granja, .btn-rotiseria {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* ----------- CATÁLOGO ROTISERÍA ----------- */
-.catalogo-rotiseria {
-  background-color: #ffffff;
-  min-height: 100vh;
-  padding: 2rem;
-  color: #333;
+.btn-granja {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 
-.catalogo-rotiseria .acordeon-btn {
-  background: linear-gradient(90deg, var(--color-rotiseria-primario), var(--color-rotiseria-secundario));
+.btn-rotiseria {
+  background: linear-gradient(135deg, #28a745, #82c91e);
 }
 
-.catalogo-rotiseria .acordeon-btn:hover {
-  background: linear-gradient(90deg, #34c86d, #30e6cc);
+/* === SECCIONES DE BIENVENIDA === */
+.bienvenida {
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
-/* ACORDEÓN ESTILOS COMUNES */
-.acordeon-item {
-  margin-bottom: 1rem;
+.imagenes-principales {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.imagenes-principales img {
+  max-width: 300px;
   border-radius: 10px;
+}
+
+/* === ACORDEÓN CATÁLOGO === */
+.acordeon-item {
+  margin: 1.5rem auto;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
   overflow: hidden;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 5px rgba(0, 128, 0, 0.1);
 }
 
 .acordeon-btn {
   width: 100%;
+  background-color: #007bff;
   color: white;
   padding: 1rem;
   font-size: 1.2rem;
   border: none;
   text-align: left;
   cursor: pointer;
-  transition: background 0.3s ease;
-  border-radius: 8px;
 }
 
-.acordeon-item.active .acordeon-contenido {
-  display: block;
+.catalogo-rotiseria .acordeon-btn {
+  background-color: #28a745;
 }
 
-/* GRILLA PRODUCTOS */
-.grid-productos {
+.acordeon-contenido {
+  display: none;
+  padding: 1rem;
+}
+
+.acordeon-contenido.activo {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 
-/* PRODUCTO */
+.grid-productos {
+  margin-top: 1rem;
+}
+
+/* === PRODUCTOS === */
 .producto {
-  background-color: #fff;
+  background-color: #fdfdfd;
   border: 1px solid #ddd;
-  border-radius: 12px;
   padding: 1rem;
+  border-radius: 8px;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s;
 }
 
 .producto:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
 }
 
 .producto img {
-  max-width: 70%;
+  width: 100%;
+  max-width: 160px;
   height: auto;
-  border-radius: 8px;
+  margin: 0 auto 0.5rem;
+  border-radius: 6px;
+  display: block;
 }
 
 .producto h3 {
   font-size: 1.1rem;
-}
-/* ----------- CONTACTO ----------- */
-body.contacto {
-  background-color: #ffffff;
-  color: #333;
+  margin: 0.5rem 0;
 }
 
+.producto p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.producto span {
+  display: block;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #111;
+}
+
+.btn-comprar {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.catalogo-rotiseria .btn-comprar {
+  background-color: #28a745;
+}
+
+.btn-comprar:hover {
+  opacity: 0.9;
+}
+
+/* === CONTACTO === */
 .contacto-info {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: left;
-}
-
-.contacto-info h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.contacto-info p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.info-contacto p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  margin: 10px 0;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
 }
 
 .info-contacto i {
-  color: var(--color-rotiseria-primario);
-}
-
-/* WhatsApp Botón */
-.whatsapp {
-  margin: 20px 0;
+  margin-right: 0.5rem;
+  color: #007bff;
 }
 
 .whatsapp-boton {
   display: inline-block;
   background-color: #25D366;
   color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 6px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .whatsapp-boton:hover {
   background-color: #1ebe5d;
 }
 
-/* Modal WhatsApp */
+/* MODAL */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .modal-contenido {
-  background-color: white;
+  background: white;
   padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
+  border-radius: 10px;
   text-align: center;
 }
 
-.modal-botones {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.btn-confirmar,
-.btn-cancelar {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
+.modal-botones button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .btn-confirmar {
-  background-color: #25D366;
+  background-color: #28a745;
   color: white;
-}
-
-.btn-confirmar:hover {
-  background-color: #1ebe5d;
+  border: none;
 }
 
 .btn-cancelar {
   background-color: #ccc;
-  color: #333;
+  border: none;
 }
 
-.btn-cancelar:hover {
-  background-color: #bbb;
+/* FOOTER */
+footer {
+  background-color: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
 }
 
-/* Mapa */
-.mapa iframe {
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  margin-top: 1rem;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar, .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagenes-principales {
+    flex-direction: column;
+  }
+
+  .acordeon-contenido.activo {
+    grid-template-columns: 1fr;
+  }
+
+  .botones-inicio {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-granja, .btn-rotiseria {
+    width: 90%;
+    font-size: 1.1rem;
+  }
 }
